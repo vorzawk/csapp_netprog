@@ -19,6 +19,7 @@ int main(int argc, char **argv)
     }
 
     listenfd = Open_listenfd(argv[1]);
+    printf("Server up and running!\n");
     while (1) {
 	clientlen = sizeof(struct sockaddr_storage); 
 	connfd = Accept(listenfd, (SA *)&clientaddr, &clientlen);
@@ -26,6 +27,7 @@ int main(int argc, char **argv)
                     client_port, MAXLINE, 0);
         printf("Connected to (%s, %s)\n", client_hostname, client_port);
 	echo(connfd);
+    printf("Connection closed\n");
 	Close(connfd);
     }
     exit(0);
