@@ -11,6 +11,7 @@ int main(int argc, char **argv)
     rio_t rio;
 
     if (argc != 3) {
+    /* Client should specify the completely specify the server address */
 	fprintf(stderr, "usage: %s <host> <port>\n", argv[0]);
 	exit(0);
     }

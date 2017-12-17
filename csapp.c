@@ -1004,6 +1004,8 @@ int open_listenfd(char *port)
     hints.ai_socktype = SOCK_STREAM;             /* Accept connections */
     hints.ai_flags = AI_PASSIVE | AI_ADDRCONFIG; /* ... on any IP address */
     hints.ai_flags |= AI_NUMERICSERV;            /* ... using port number */
+    /* call getaddrinfo with NULL for hostname, to get the adrrinfo structs
+     * corresponding to the local machine (server) */
     if ((rc = getaddrinfo(NULL, port, &hints, &listp)) != 0) {
         fprintf(stderr, "getaddrinfo failed (port %s): %s\n", port, gai_strerror(rc));
         return -2;
